@@ -4,6 +4,7 @@
 This is a command-line application that can be used to manage a company's employee database.
 
 ## GitHub URL
+https://github.com/MissyStiner/employee-tracker
 
 ## Walkthrough Demo Video URL
 
@@ -79,3 +80,27 @@ See if you can add some additional functionality to your application, such as th
 - Delete departments, roles, and employees.
 
 - View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
+
+## Departments
+- 1: MKT
+- 2: Tech
+- 3: BPS
+- 4: PM
+- 5: HR
+
+## Roles
+- 1: SVP $90K
+- 2: JVP $80K
+- 3: AVP $70K
+- 4: Manager $60K
+- 5: AsntMngr $50K
+- 6: Specialist $40K
+- 7: Intern $30K
+
+## Employees
+- 1: Travis Pitts, Manager, Tech
+- 2: Jason Masongill, Manager, MKT
+- 3: Paul Clark, SVP, Tech
+- 4: Jessica Smithe, Intern, Tech
+- 5: Kelsey Bowman, JVP, MKT
+- 6: Susan Jones, SVP, MKT
