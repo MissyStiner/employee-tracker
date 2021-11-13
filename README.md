@@ -32,7 +32,7 @@ WHEN I choose to update an employee role<br>
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
 ## Mock-Up
-![image](.assets/12-sql-homework-demo-01.gif)
+![image](./assets/12-sql-homework-demo-01.gif)
 
 #### Database schema design
 ![image](./assets/12-sql-homework-demo-02.png)<br>
