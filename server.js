@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
+const inputCheck = require('./utils/inputCheck');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -76,13 +77,33 @@ app.delete('/api/employees/:id', (req, res) => {
     });
   });
 
-// //   // Delete an employee
-// // db.query(`DELETE FROM employee WHERE id = ?`, 1, (err, result) => {
-// //     if (err) {
-// //       console.log(err);
-// //     }
-// //     console.log(result);
-// //   });
+// Create an employee
+app.post('/api/employees', ({ body }, res) => {
+    const errors = inputCheck(body, 'first_name', 'last_name', 'role_id', 'manager_id');
+    if (errors) {
+      res.status(400).json({ error: errors });
+      return;
+    }
+    
+    const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+    VALUES (?,?,?,?)`;
+  const params = [
+                body.first_name, 
+                body.last_name, 
+                body.role_id,
+                body.manager_id];
+  
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: body
+    });
+  });
+  });
 
 // // Create an employee
 // const sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id) 
