@@ -7,6 +7,7 @@ This is a command-line application that can be used to manage a company's employ
 https://github.com/MissyStiner/employee-tracker
 
 ## Walkthrough Demo Video URL
+https://watch.screencastify.com/v/uX8GY9UfXrELlpjn94Ds
 
 ## User Story
 AS A business owner<br>
