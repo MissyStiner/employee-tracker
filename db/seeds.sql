@@ -1,19 +1,3 @@
--- ## Departments
--- - 1: MKT
--- - 2: Tech
--- - 3: BPS
--- - 4: PM
--- - 5: HR
-
--- ## Roles
--- - 1: SVP $90K
--- - 2: JVP $80K
--- - 3: AVP $70K
--- - 4: Manager $60K
--- - 5: AsntMngr $50K
--- - 6: Specialist $40K
--- - 7: Intern $30K
-
 -- ## Employees
 -- - 1: Paul Clark, SVP, Tech
 -- - 2: Travis Pitts, Manager, Tech
@@ -40,3 +24,58 @@ VALUES
 ('Montague', 'Summers', 7, 4),
 ('Octavia', 'Butler', 7, 4),
 ('Unica', 'Zurn', 7, 4);
+
+-- ## Roles
+-- - 1: SVP $90K
+-- - 2: JVP $80K
+-- - 3: AVP $70K
+-- - 4: Manager $60K
+-- - 5: AsntMngr $50K
+-- - 6: Specialist $40K
+-- - 7: Intern $30K
+
+INSERT INTO role (title, salary, department_id)
+VALUES
+('SVP', 90000, 1),
+('JVP', 80000, 1),
+('AVP', 70000, 1),
+('Manager', 60000, 1),
+('AsntMngr', 50000, 1),
+('Specialist', 40000, 1),
+('Intern', 30000, 1),
+('SVP', 90000, 2),
+('JVP', 80000, 2),
+('AVP', 70000, 2),
+('Manager', 60000, 2),
+('AsntMngr', 50000, 2),
+('Specialist', 40000, 2),
+('Intern', 30000, 2),
+('SVP', 90000, 3),
+('JVP', 80000, 3),
+('AVP', 70000, 3),
+('Manager', 60000, 3),
+('AsntMngr', 50000, 3),
+('Specialist', 40000, 3),
+('Intern', 30000, 3),
+('SVP', 90000, 4),
+('JVP', 80000, 4),
+('AVP', 70000, 4),
+('Manager', 60000, 4),
+('AsntMngr', 50000, 4),
+('Specialist', 40000, 4),
+('Intern', 30000, 4),
+('SVP', 90000, 5),
+('JVP', 80000, 5),
+('AVP', 70000, 5),
+('Manager', 60000, 5),
+('AsntMngr', 50000, 5),
+('Specialist', 40000, 5),
+('Intern', 30000, 5);
+
+
+-- ## Departments
+-- - 1: MKT
+-- - 2: Tech
+-- - 3: BPS
+-- - 4: PM
+-- - 5: HR
