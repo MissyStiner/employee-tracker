@@ -1,6 +1,8 @@
-const mysql = require('mysql2');
 const express = require('express');
 const inputCheck = require('./utils/inputCheck');
+const db = require('./db/connection');
+const cTable = require('console.table');
+var inquirer = require('inquirer');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -9,18 +11,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Connect to database
-const db = mysql.createConnection(
-    {
-      host: 'localhost',
-      // Your MySQL username,
-      user: 'root',
-      // Your MySQL password
-      password: 'password',
-      database: 'employees'
-    },
-    console.log('Connected to the employees database.')
-  );
+
 
 // Get all employees
 app.get('/api/employees', (req, res) => {
@@ -214,3 +205,18 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+// inquirer
+//   .prompt([
+//     /* Pass your questions in here */
+//   ])
+//   .then((answers) => {
+//     // Use user feedback for... whatever!!
+//   })
+//   .catch((error) => {
+//     if (error.isTtyError) {
+//       // Prompt couldn't be rendered in the current environment
+//     } else {
+//       // Something else went wrong
+//     }
+//   });
