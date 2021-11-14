@@ -38,7 +38,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 #### Database schema design
 ![image](./assets/12-sql-homework-demo-02.png)<br>
 
-Schema should contain the following three tables:
+Schema contains the following three tables:
 
 #### Department
 
@@ -67,40 +67,3 @@ Schema should contain the following three tables:
 - role_id: INT to hold reference to employee role
 
 - manager_id: INT to hold reference to another employee that is manager of the current employee. This field might be null if the employee has no manager.
-
-### Bonus Functionality
-See if you can add some additional functionality to your application, such as the ability to do the following:
-
-- Update employee managers.
-
-- View employees by manager.
-
-- View employees by department.
-
-- Delete departments, roles, and employees.
-
-- View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
-
-## Departments
-- 1: MKT
-- 2: Tech
-- 3: BPS
-- 4: PM
-- 5: HR
-
-## Roles
-- 1: SVP $90K
-- 2: JVP $80K
-- 3: AVP $70K
-- 4: Manager $60K
-- 5: AsntMngr $50K
-- 6: Specialist $40K
-- 7: Intern $30K
-
-## Employees
-- 1: Travis Pitts, Manager, Tech
-- 2: Jason Masongill, Manager, MKT
-- 3: Paul Clark, SVP, Tech
-- 4: Jessica Smithe, Intern, Tech
-- 5: Kelsey Bowman, JVP, MKT
-- 6: Susan Jones, SVP, MKT
