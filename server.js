@@ -1,5 +1,5 @@
-const express = require('express');
 const mysql = require('mysql2');
+const express = require('express');
 const inputCheck = require('./utils/inputCheck');
 
 const PORT = process.env.PORT || 3001;
@@ -24,7 +24,12 @@ const db = mysql.createConnection(
 
 // Get all employees
 app.get('/api/employees', (req, res) => {
-    const sql = `SELECT * FROM employee`;
+    const sql = `SELECT employee.*, role.title
+    AS title
+    FROM employee
+    LEFT JOIN role
+    ON employee.role_id = employee.id
+    `;
   
     db.query(sql, (err, rows) => {
       if (err) {
@@ -40,7 +45,12 @@ app.get('/api/employees', (req, res) => {
 
 // Get a single employee
 app.get('/api/employees/:id', (req, res) => {
-    const sql = `SELECT * FROM employee WHERE id = ?`;
+    const sql = `SELECT employee.*, role.title
+                AS title
+                FROM employee
+                LEFT JOIN role
+                ON employee.role_id = employee.id 
+                WHERE id = employee.id = ?`;
     const params = [req.params.id];
   
     db.query(sql, params, (err, row) => {
@@ -84,7 +94,6 @@ app.post('/api/employees', ({ body }, res) => {
       res.status(400).json({ error: errors });
       return;
     }
-    
     const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES (?,?,?,?)`;
   const params = [
@@ -116,7 +125,87 @@ app.post('/api/employees', ({ body }, res) => {
 //   }
 //   console.log(result);
 // });
-  
+
+app.get('/api/roles', (req, res) => {
+  const sql = `SELECT * FROM role`;
+  db.query(sql, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
+app.get('/api/roles/:id', (req, res) => {
+  const sql = `SELECT * FROM role WHERE id = ?`;
+  const params = [req.params.id];
+  db.query(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row
+    });
+  });
+});
+
+app.delete('/api/roles/:id', (req, res) => {
+  const sql = `DELETE FROM role WHERE id = ?`;
+  const params = [req.params.id];
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      // checks if anything was deleted
+    } else if (!result.affectedRows) {
+      res.json({
+        message: 'Role not found'
+      });
+    } else {
+      res.json({
+        message: 'deleted',
+        changes: result.affectedRows,
+        id: req.params.id
+      });
+    }
+  });
+});
+
+// Update an employees role
+app.put('/api/employee/:id', (req, res) => {
+  const errors = inputCheck(req.body, 'role_id');
+
+if (errors) {
+  res.status(400).json({ error: errors });
+  return;
+}
+  const sql = `UPDATE employee SET role_id = ? 
+               WHERE id = ?`;
+  const params = [req.body.party_id, req.params.id];
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      // check if a record was found
+    } else if (!result.affectedRows) {
+      res.json({
+        message: 'Employee not found'
+      });
+    } else {
+      res.json({
+        message: 'success',
+        data: req.body,
+        changes: result.affectedRows
+      });
+    }
+  });
+});
+
+
 // Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
