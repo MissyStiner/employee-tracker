@@ -22,9 +22,37 @@ const db = mysql.createConnection(
   );
 
 
-db.query(`SELECT * FROM employee`, (err, rows) => {
-    console.log(rows);
-  });
+// db.query(`SELECT * FROM employee`, (err, rows) => {
+//     console.log(rows);
+//   });
+
+// // GET a single employee
+// db.query(`SELECT * FROM employee WHERE id = 1`, (err, row) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log(row);
+//   });
+
+// //   // Delete an employee
+// // db.query(`DELETE FROM employee WHERE id = ?`, 1, (err, result) => {
+// //     if (err) {
+// //       console.log(err);
+// //     }
+// //     console.log(result);
+// //   });
+
+// // Create an employee
+// const sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id) 
+//               VALUES (?,?,?,?,?)`;
+// const params = [1, 'Paul', 'Clarke', 1, 1];
+
+// db.query(sql, params, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
   
 // Default response for any other request (Not Found)
 app.use((req, res) => {
